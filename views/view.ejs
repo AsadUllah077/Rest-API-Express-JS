@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All insta posts</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+        <h1>Insta Posts</h1>
+            <!-- Posts will be dynamically loaded here -->
+             <a href="http://localhost:8080/posts/new">Create Post</a>
+            <% for(post of posts){ %>
+               <div class="post">
+                        <h3><%= post.id  %></h3>
+                        <h3 class="user"><%= post.user   %></h3>
+                        <h4 ><%= post.content   %></h4>
+                        <img src="<%= post.img   %>" class="img">
+                        <a href="http://localhost:8080/posts/detail/<%=post.id%>">View dtail </a> &nbsp; <a href="http://localhost:8080/posts/edit/<%=post.id%>">Edit</a>
+                        <form method="post" action="http://localhost:8080/posts/<%=post.id%>?_method=DELETE">
+                            <button type="submit">Delete</button>
+                        </form>
+               </div>
+            <%}%>
+</body>
+</html>
